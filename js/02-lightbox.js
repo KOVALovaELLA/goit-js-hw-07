@@ -27,9 +27,9 @@ function createPicturesMarkup(items) {
 pictureContainer.insertAdjacentHTML('beforeend', pictureMarkup)
 
 
-document.addEventListener("DOMContentLoaded", onImageClick )
-function onImageClick() {
-    const galleryItems = document.querySelectorAll(".gallery__item");
+document.addEventListener("DOMContentLoaded", onLoad )
+function onLoad() {
+   
 
     const lightbox = new SimpleLightbox(".gallery a", {
         captionsData: "alt",
@@ -37,6 +37,5 @@ function onImageClick() {
         captionDelay: 250,
     });
 
-    lightbox.on("show.simplelightbox", function () {
-    });
+    
 };

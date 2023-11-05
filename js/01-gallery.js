@@ -38,21 +38,27 @@ function onPictureContainerClick(event) {
 
 }
 
- function openModal(imageURL) {
-        const modal = basicLightbox.create(`
-            <img src="${imageURL}" />
-        `);
-     modal.show();
-     
 
-     document.addEventListener('keydown', onEscapeClick);
-        function onEscapeClick (event) {
-        if (modal.visible()) {
+function openModal(imageURL) {
+    const modal = basicLightbox.create(`
+        <img src="${imageURL}" />
+    `, {
+        onShow: function (instance) {
+            document.addEventListener('keydown', onEscapeClick);
+        },
+        onClose: function (instance) {
+            document.removeEventListener('keydown', onEscapeClick);
+        },
+    });
+
+    modal.show();
+
+    function onEscapeClick(event) {
         if (event.key === 'Escape') {
             modal.close();
         }
     }
-     };
-     
-    }
+}
+
+
 
